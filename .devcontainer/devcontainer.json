@@ -7,6 +7,8 @@
     "service": "app",
     "workspaceFolder": "/app",
     "remoteUser": "node",
-    "extensions": [],
+    "extensions": [
+        "esbenp.prettier-vscode"
+    ],
     "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh"
 }
