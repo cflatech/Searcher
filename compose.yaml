@@ -1,12 +1,9 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: ./docker/api/Dockerfile
-    ports:
-      - "8080:80"
-    volumes:
-      - .:/app
-    working_dir: /app
-    tty: true
-    
+    app:
+        build:
+            context: .
+            dockerfile: ./docker/api/Dockerfile
+        volumes:
+            - .:/app
+        working_dir: /app
+        tty: true
