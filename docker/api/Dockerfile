@@ -1,4 +1,4 @@
-FROM node:17.2.0-bullseye
+FROM node:16.13.1-bullseye
 
 ARG UID
 ARG GID
