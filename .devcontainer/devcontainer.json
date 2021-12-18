@@ -1,0 +1,12 @@
+{
+    "name": "dev",
+    "dockerComposeFile": [
+        "../compose.yaml",
+        "compose.yaml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/app",
+    "remoteUser": "node",
+    "extensions": [],
+    "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh"
+}

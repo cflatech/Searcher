@@ -1,0 +1,10 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+      args:
+        UID: $UID
+        GID: $GID
+    env_file:
+      - ./.devcontainer/.env
