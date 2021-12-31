@@ -1,14 +1,9 @@
 {
-    "name": "dev",
-    "dockerComposeFile": [
-        "../compose.yaml",
-        "compose.yaml"
-    ],
-    "service": "app",
-    "workspaceFolder": "/app",
-    "remoteUser": "node",
-    "extensions": [
-        "esbenp.prettier-vscode"
-    ],
-    "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh"
+  "name": "dev",
+  "dockerComposeFile": ["../compose.yaml", "compose.yaml"],
+  "service": "dev",
+  "workspaceFolder": "/app",
+  "remoteUser": "node",
+  "extensions": ["esbenp.prettier-vscode"],
+  "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh"
 }
