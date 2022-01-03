@@ -32,6 +32,7 @@
     "@aspida/node-fetch": "^1.7.1",
     "@aspida/swr": "^1.7.1",
     "@prisma/client": "^2.21.2",
+    "@slack/web-api": "^6.5.1",
     "class-validator": "^0.13.1",
     "frourio": "^0.25.1",
     "next": "^10.1.3",
