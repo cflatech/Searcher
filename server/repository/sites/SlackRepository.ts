@@ -1,32 +1,36 @@
-import SiteRepository, { SearchResult } from "./SiteRepository";
-import { SearchMessagesResponse, WebClient } from "@slack/web-api";
+import { SearchResult } from "$/types/sites";
+import {
+  SearchMessagesArguments,
+  SearchMessagesResponse,
+  WebClient,
+} from "@slack/web-api";
+import { SLACK_TOKEN } from "$/service/envValues";
+import { depend } from "velona";
 
-export default class SlackRepository implements SiteRepository {
-  private token = "";
-  private client: WebClient;
+const webClient = new WebClient(SLACK_TOKEN);
 
-  constructor() {
-    if (process.env.SLACK_TOKEN) {
-      this.token = process.env.SLACK_TOKEN;
-    }
-    this.client = new WebClient(this.token);
-  }
-
-  async search(query: string): Promise<Array<SearchResult>> {
-    const result = await this.client.search.messages({
+export const search = depend(
+  {
+    webClient: webClient as {
+      search: {
+        messages(
+          query: SearchMessagesArguments
+        ): Promise<SearchMessagesResponse>;
+      };
+    },
+  },
+  async ({ webClient }, query: string): Promise<Array<SearchResult>> => {
+    const response = await webClient.search.messages({
       query: query,
       sort_dir: "asc",
       sort: "score",
     });
 
-    // (result?.messages?.matches ?? []).forEach((data) => {});
-
-    return [
-      {
-        title: "test",
-        link: "http://example.com",
-        description: "test",
-      },
-    ];
+    return (response?.messages?.matches ?? []).map((match) => {
+      return {
+        text: match.text ?? "",
+        link: match.permalink ?? "",
+      };
+    });
   }
-}
+);

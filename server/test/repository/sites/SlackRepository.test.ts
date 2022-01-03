@@ -1,13 +1,28 @@
-import SlackRepository from "$/repository/sites/SlackRepository";
+import { search } from "$/repository/sites/SlackRepository";
 
 describe("searchのテスト", () => {
   test("Slackから検索結果を取得できる", async () => {
-    const repository = new SlackRepository();
-    await expect(repository.search("test")).resolves.toStrictEqual([
+    const injectedSearch = search.inject((deps) => ({
+      webClient: {
+        search: {
+          messages: async () => {
+            return {
+              ok: true,
+              messages: {
+                matches: [
+                  { text: "SearchedText", permalink: "http://example.com" },
+                ],
+              },
+            };
+          },
+        },
+      },
+    }));
+
+    await expect(injectedSearch("test")).resolves.toStrictEqual([
       {
-        title: "test",
+        text: "SearchedText",
         link: "http://example.com",
-        description: "test",
       },
     ]);
   });
