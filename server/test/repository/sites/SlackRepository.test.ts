@@ -2,7 +2,7 @@ import { search } from "$/repository/sites/SlackRepository";
 
 describe("searchのテスト", () => {
   test("Slackから検索結果を取得できる", async () => {
-    const injectedSearch = search.inject((deps) => ({
+    const injectedSearch = search.inject(() => ({
       webClient: {
         search: {
           messages: async () => {
