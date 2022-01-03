@@ -1,4 +1,4 @@
-import { search } from "$/repository/sites/SlackRepository";
+import { search } from "$/repository/sites/slackRepository";
 
 describe("searchのテスト", () => {
   test("Slackから検索結果を取得できる", async () => {
