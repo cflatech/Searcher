@@ -5,8 +5,8 @@ import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/node-fetch'
 import api from '~/server/api/$api'
-import Home from '~/pages/index'
-import { render, fireEvent } from '../testUtils'
+import Home from '~/pages/old/index'
+import { render, fireEvent } from '../../testUtils'
 
 dotenv.config({ path: 'server/.env' })
 
