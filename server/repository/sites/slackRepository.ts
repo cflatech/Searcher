@@ -6,6 +6,7 @@ import {
 } from "@slack/web-api";
 import { SLACK_TOKEN } from "$/service/envValues";
 import { depend } from "velona";
+import { DateTime } from "luxon";
 
 const webClient = new WebClient(SLACK_TOKEN);
 
@@ -30,6 +31,7 @@ export const search = depend(
       return {
         text: match.text ?? "",
         link: match.permalink ?? "",
+        timestamp: DateTime.fromMillis(Number(match.ts)) ?? new DateTime(),
       };
     });
   }

@@ -1,5 +1,7 @@
+import { DateTime } from "luxon";
+
 export type SearchResult = {
   text: string;
   link: string;
-  // TODO: timestamp入れる
+  timestamp: DateTime;
 };
