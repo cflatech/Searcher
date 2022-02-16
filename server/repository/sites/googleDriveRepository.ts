@@ -1,34 +1,57 @@
-import { google, drive_v3, driveactivity_v2 } from "googleapis";
-import { file } from "googleapis/build/src/apis/file";
+import { SearchResult } from "$/types/sites";
+import { drive_v3, google } from "googleapis";
+import { depend } from "velona";
+import { DateTime } from "luxon";
+import { GOOGLE_DRIVE_CREDENTIAL } from "$/service/envValues";
 
-export const search = async () => {
+const urlPrefix = "https://drive.google.com/file/d/";
+
+const getFileInformations = async (
+  query: string
+): Promise<drive_v3.Schema$File[] | null> => {
   const jwtAuth = new google.auth.JWT({
-    keyFile: "./server/credentials/google.json",
+    keyFile: GOOGLE_DRIVE_CREDENTIAL,
     scopes: ["https://www.googleapis.com/auth/drive"],
   });
 
-  try {
-    await jwtAuth.authorize();
-    const drive = google.drive({
-      version: "v3",
-      auth: jwtAuth,
-    });
+  await jwtAuth.authorize();
+  const drive = google.drive({
+    version: "v3",
+    auth: jwtAuth,
+  });
 
-    const response = await drive.files.list({
-      q: "mimeType='image/jpeg'",
-      fields: "files(id, name)",
-    });
+  const response = await drive.files.list({
+    q: "fullText contains '" + query + "'",
+    fields: "files(id, name, modifiedTime)",
+  });
 
-    const files = response?.data.files;
-    console.log(response);
-    console.log("Files:");
-    console.log(files);
-    if (files?.length) {
-      files.map((file) => {
-        console.log(`${file.name}`);
-      });
-    }
-  } catch (e) {
-    throw e;
+  if (!response.data.files) {
+    return null;
   }
+  return response.data.files;
 };
+
+export const search = depend(
+  {
+    getFileInformations: getFileInformations as (
+      query: string
+    ) => Promise<drive_v3.Schema$File[]>,
+  },
+  async (
+    { getFileInformations },
+    query: string
+  ): Promise<Array<SearchResult>> => {
+    const files = await getFileInformations(query);
+    if (!files) {
+      return [];
+    }
+
+    return files.map((file) => {
+      return {
+        text: file.name ?? "no name",
+        link: urlPrefix + file.id,
+        timestamp: DateTime.fromISO(file.modifiedTime ?? ""),
+      };
+    });
+  }
+);
