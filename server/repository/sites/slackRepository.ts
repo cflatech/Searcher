@@ -20,7 +20,7 @@ export const search = depend(
       };
     },
   },
-  async ({ webClient }, query: string): Promise<Array<SearchResult>> => {
+  async ({ webClient }, query: string): Promise<SearchResult[]> => {
     const response = await webClient.search.messages({
       query: query,
       sort_dir: "asc",
