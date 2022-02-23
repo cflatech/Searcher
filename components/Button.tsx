@@ -9,7 +9,7 @@ const Button: React.VFC<Props> = (props) => {
   return (
     <>
       <button
-        className="bg-sky-500 hover:bg-sky-600 active:bg-sky-700 px-5 py-1.5 rounded-md text-white"
+        className="bg-sky-500 hover:bg-sky-600 active:bg-sky-700 px-5 py-1.5 rounded-md text-white min-w-max"
         onClick={props.onClick}
       >
         {props.children}
