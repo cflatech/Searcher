@@ -4,6 +4,10 @@
   "service": "dev",
   "workspaceFolder": "/app",
   "remoteUser": "node",
-  "extensions": ["esbenp.prettier-vscode"],
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "steoates.autoimport"
+  ],
   "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh"
 }
