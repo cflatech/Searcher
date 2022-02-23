@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Button from "components/Button";
+import SearchText from "~/components/SearchText";
 
 const Top = () => {
   return (
@@ -12,16 +13,8 @@ const Top = () => {
           Searcher
         </h1>
         <form>
-          <div className="mx-auto max-w-xs mt-2">
-            <label className="relative block text-xs">
-              <span className="absolute pl-2 pt-2">
-                <img className="h-5 w-5 fill-slate-300" src="/search.svg" />
-              </span>
-            </label>
-            <input
-              className="border border-slate-300 rounded-md py-1 pr-3 pl-9 w-full"
-              type="text"
-            />
+          <div className="mt-2">
+            <SearchText />
           </div>
           <div className="grid place-items-center mt-2">
             <Button onClick={() => {}}>検索</Button>
