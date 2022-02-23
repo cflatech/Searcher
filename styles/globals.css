@@ -5,3 +5,9 @@
 html {
   font-size: 15px;
 }
+
+body,
+html,
+div#__next {
+  height: 100%;
+}
