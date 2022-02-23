@@ -5,19 +5,19 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 const Top = () => {
-  const [text, setText] = useState<string>("");
+  const [query, setQuery] = useState<string>("");
   const router = useRouter();
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
+    setQuery(e.target.value);
   };
 
   const handleSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (text === "") {
+    if (query === "") {
       return;
     }
-    router.push({ pathname: "search", query: { q: text } });
+    router.push({ pathname: "search", query: { q: query } });
   };
 
   return (
