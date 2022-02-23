@@ -2,6 +2,7 @@ import React from "react";
 
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 };
 
 const SearchText: React.VFC<Props> = (props) => {
@@ -16,6 +17,7 @@ const SearchText: React.VFC<Props> = (props) => {
         <input
           className="border border-slate-300 rounded-md py-1 pr-3 pl-9 w-full"
           onChange={props.onChange}
+          defaultValue={props.value ?? ""}
           type="text"
         />
       </div>
