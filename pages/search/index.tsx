@@ -1,18 +1,18 @@
 import Head from "next/head";
-import Button from "components/Button";
+import Button from "~/components/Button";
 
 const Top = () => {
   return (
     <div>
       <Head>
-        <title>Seacher Top</title>
+        <title>Search Results</title>
       </Head>
       <main>
-        <h1 className="text-3xl font-semibold text-center flex justify-center items-end h-20">
-          Searcher
-        </h1>
-        <form>
-          <div className="mx-auto max-w-xs mt-2">
+        <header className="flex">
+          <div className="text-3xl font-semibold text-center flex justify-center items-end ">
+            Searcher
+          </div>
+          <div className="max-w-xs mt-2 mx-2">
             <label className="relative block text-xs">
               <span className="absolute pl-2 pt-2">
                 <img className="h-5 w-5 fill-slate-300" src="/search.svg" />
@@ -23,10 +23,11 @@ const Top = () => {
               type="text"
             />
           </div>
-          <div className="grid place-items-center mt-2">
+          <div className="mt-2">
             <Button onClick={() => {}}>検索</Button>
           </div>
-        </form>
+        </header>
+        <form></form>
       </main>
     </div>
   );
