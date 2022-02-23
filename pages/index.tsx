@@ -1,8 +1,25 @@
 import Head from "next/head";
 import Button from "components/Button";
 import SearchText from "~/components/SearchText";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 const Top = () => {
+  const [text, setText] = useState<string>("");
+  const router = useRouter();
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
+  const handleSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (text === "") {
+      return;
+    }
+    router.push({ pathname: "search", query: { q: text } });
+  };
+
   return (
     <div>
       <Head>
@@ -14,10 +31,10 @@ const Top = () => {
         </h1>
         <form>
           <div className="mt-2">
-            <SearchText />
+            <SearchText onChange={handleTextChange} />
           </div>
           <div className="grid place-items-center mt-2">
-            <Button onClick={() => {}}>検索</Button>
+            <Button onClick={handleSearchButtonClick}>検索</Button>
           </div>
         </form>
       </main>

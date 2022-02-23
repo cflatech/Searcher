@@ -1,10 +1,10 @@
 import React from "react";
 
 type Props = {
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const SearchText = () => {
+const SearchText: React.VFC<Props> = (props) => {
   return (
     <>
       <div className="mx-auto max-w-xs">
@@ -15,6 +15,7 @@ const SearchText = () => {
         </label>
         <input
           className="border border-slate-300 rounded-md py-1 pr-3 pl-9 w-full"
+          onChange={props.onChange}
           type="text"
         />
       </div>
