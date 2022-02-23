@@ -21,12 +21,12 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>Search Results</title>
       </Head>
-      <header className="flex">
-        <div className="text-3xl font-semibold text-center flex justify-center items-end mx-2">
+      <header className="flex border-b-2 pb-2 h-14 items-start absolute w-full">
+        <div className="text-3xl font-semibold text-center flex justify-center items-end mx-2 mt-2">
           Searcher
         </div>
         <form className="flex">
@@ -38,8 +38,25 @@ const Search = () => {
           </div>
         </form>
       </header>
-      <main></main>
-    </div>
+      <main className="h-full flex justify-between">
+        <section className="overflow-y-scroll border-x-2 mt-14 flex-1">
+          <div className="h-32 border-b-2">ほげ</div>
+          <div className="h-32 border-b-2">ほげ</div>
+          <div className="h-32 border-b-2">ほげ</div>
+          <div className="h-32 border-b-2">ほげ</div>
+          <div className="h-32 border-b-2">ほげ</div>
+          <div className="h-32 border-b-2">ほげ</div>
+          <div className="h-32 border-b-2">ほげ</div>
+          <div className="h-32 border-b-2">ほげ</div>
+        </section>
+        <section className="overflow-y-scroll border-x-2 mt-14 flex-1">
+          <div className="h-32 border-b-2">ほげ</div>
+        </section>
+        <section className="overflow-y-scroll border-x-2 mt-14 flex-1">
+          <div className="h-32 border-b-2">ほげ</div>
+        </section>
+      </main>
+    </>
   );
 };
 
