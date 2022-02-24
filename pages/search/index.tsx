@@ -1,8 +1,11 @@
+import { DateTime } from "luxon";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "~/components/Button";
+import Column from "~/components/Column";
 import SearchText from "~/components/SearchText";
+import { SearchResult } from "~/server/types/sites";
 
 const Search = () => {
   const router = useRouter();
@@ -19,6 +22,44 @@ const Search = () => {
     }
     router.push({ pathname: "search", query: { q: query } });
   };
+
+  const test: SearchResult[] = [
+    {
+      text: "テストテキスト1",
+      link: "https://example.com",
+      timestamp: DateTime.now(),
+    },
+    {
+      text: "テストテキスト2",
+      link: "https://example.com",
+      timestamp: DateTime.now(),
+    },
+    {
+      text: "テストテキスト3",
+      link: "https://example.com",
+      timestamp: DateTime.now(),
+    },
+    {
+      text: "テストテキスト4",
+      link: "https://example.com",
+      timestamp: DateTime.now(),
+    },
+    {
+      text: "テストテキスト5",
+      link: "https://example.com",
+      timestamp: DateTime.now(),
+    },
+    {
+      text: "テストテキスト6",
+      link: "https://example.com",
+      timestamp: DateTime.now(),
+    },
+    {
+      text: "テストテキスト7",
+      link: "https://example.com",
+      timestamp: DateTime.now(),
+    },
+  ];
 
   return (
     <>
@@ -39,22 +80,8 @@ const Search = () => {
         </form>
       </header>
       <main className="h-full flex justify-between">
-        <section className="overflow-y-scroll border-x-2 mt-14 flex-1">
-          <div className="h-32 border-b-2">ほげ</div>
-          <div className="h-32 border-b-2">ほげ</div>
-          <div className="h-32 border-b-2">ほげ</div>
-          <div className="h-32 border-b-2">ほげ</div>
-          <div className="h-32 border-b-2">ほげ</div>
-          <div className="h-32 border-b-2">ほげ</div>
-          <div className="h-32 border-b-2">ほげ</div>
-          <div className="h-32 border-b-2">ほげ</div>
-        </section>
-        <section className="overflow-y-scroll border-x-2 mt-14 flex-1">
-          <div className="h-32 border-b-2">ほげ</div>
-        </section>
-        <section className="overflow-y-scroll border-x-2 mt-14 flex-1">
-          <div className="h-32 border-b-2">ほげ</div>
-        </section>
+        <Column searchResults={test}></Column>
+        <Column searchResults={test}></Column>
       </main>
     </>
   );
