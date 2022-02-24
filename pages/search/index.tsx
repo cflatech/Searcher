@@ -80,8 +80,8 @@ const Search = () => {
         </form>
       </header>
       <main className="h-full flex justify-between">
-        <Column searchResults={test}></Column>
-        <Column searchResults={test}></Column>
+        <Column searchTargetName="Qiita" searchResults={test}></Column>
+        <Column searchTargetName="Google Drive" searchResults={test}></Column>
       </main>
     </>
   );
