@@ -31,7 +31,10 @@ export const search = depend(
       return {
         text: match.text ?? "",
         link: match.permalink ?? "",
-        timestamp: DateTime.fromMillis(Number(match.ts)) ?? new DateTime(),
+        timestamp:
+          DateTime.fromSeconds(
+            Number(match.ts?.slice(0, match.ts?.indexOf(".")))
+          ) ?? DateTime.now(),
       };
     });
   }

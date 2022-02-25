@@ -28,7 +28,7 @@ describe("searchのテスト", () => {
       {
         text: "SearchedText",
         link: "http://example.com",
-        timestamp: DateTime.fromMillis(1508284197.000015),
+        timestamp: DateTime.fromSeconds(1508284197),
       },
     ]);
   });
