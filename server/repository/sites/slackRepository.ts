@@ -31,10 +31,11 @@ export const search = depend(
       return {
         text: match.text ?? "",
         link: match.permalink ?? "",
-        timestamp:
+        timestamp: (
           DateTime.fromSeconds(
             Number(match.ts?.slice(0, match.ts?.indexOf(".")))
-          ) ?? DateTime.now(),
+          ) ?? DateTime.now()
+        ).toFormat("yyyy-MM-dd HH:mm:ss"),
       };
     });
   }
