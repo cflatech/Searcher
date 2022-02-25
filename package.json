@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@aspida/node-fetch": "^1.7.1",
+    "@tailwindcss/line-clamp": "^0.3.1",
     "@testing-library/react": "^11.2.6",
     "@types/jest": "^26.0.24",
     "@types/luxon": "^2.0.9",
