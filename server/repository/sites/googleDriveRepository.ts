@@ -50,7 +50,9 @@ export const search = depend(
       return {
         text: file.name ?? "no name",
         link: urlPrefix + file.id,
-        timestamp: DateTime.fromISO(file.modifiedTime ?? ""),
+        timestamp: DateTime.fromISO(file.modifiedTime ?? "").toFormat(
+          "yyyy-MM-dd HH:mm:ss"
+        ),
       };
     });
   }

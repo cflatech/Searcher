@@ -20,7 +20,9 @@ describe("searchのテスト", () => {
       {
         text: "SearchedText",
         link: "https://drive.google.com/file/d/file_id",
-        timestamp: DateTime.fromISO("2019-05-01T07:27:14.190Z"),
+        timestamp: DateTime.fromISO("2019-05-01T07:27:14.190Z").toFormat(
+          "yyyy-MM-dd HH:mm:ss"
+        ),
       },
     ];
 
