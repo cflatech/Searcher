@@ -1,18 +1,10 @@
-import useAspidaSWR from "@aspida/swr";
-import { DateTime } from "luxon";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "~/components/Button";
 import Column from "~/components/Column";
 import SearchText from "~/components/SearchText";
-import { SearchResult } from "~/server/types/sites";
-import { apiClient } from "~/utils/apiClient";
-
-type SearchResults = {
-  targetName: string;
-  results: SearchResult[];
-};
+import { SearchTarget } from "~/server/types/sites";
 
 const Search = () => {
   const router = useRouter();
@@ -30,64 +22,7 @@ const Search = () => {
     router.push({ pathname: "search", query: { q: query } });
   };
 
-  const { data, error, mutate } = useAspidaSWR(apiClient.search, {
-    query: {
-      query: router.query.q as string,
-    },
-  });
-
-  const [resultsList, setResultsList] = useState<SearchResults[]>([]);
-
-  const test: SearchResult[] = [
-    {
-      text: "テストテキスト1",
-      link: "https://example.com",
-      timestamp: DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),
-    },
-    {
-      text: "テストテキスト2",
-      link: "https://example.com",
-      timestamp: DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),
-    },
-    {
-      text: "テストテキスト3",
-      link: "https://example.com",
-      timestamp: DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),
-    },
-    {
-      text: "テストテキスト4",
-      link: "https://example.com",
-      timestamp: DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),
-    },
-    {
-      text: "テストテキスト5",
-      link: "https://example.com",
-      timestamp: DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),
-    },
-    {
-      text: "テストテキスト6",
-      link: "https://example.com",
-      timestamp: DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),
-    },
-    {
-      text: "テストテキスト7",
-      link: "https://example.com",
-      timestamp: DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),
-    },
-  ];
-
-  useEffect(() => {
-    setResultsList([
-      {
-        targetName: "Slack",
-        results: data ?? [],
-      },
-      {
-        targetName: "Google Drive",
-        results: test,
-      },
-    ]);
-  }, [data]);
+  const searchTargets: SearchTarget[] = ["slack", "googledrive"];
 
   return (
     <>
@@ -108,12 +43,12 @@ const Search = () => {
         </form>
       </header>
       <main className="h-full flex justify-between">
-        {resultsList.map((searchResults) => {
+        {searchTargets.map((target) => {
           return (
             <Column
-              key={searchResults.targetName}
-              searchTargetName={searchResults.targetName}
-              searchResults={searchResults.results}
+              key={target}
+              searchTarget={target}
+              query={router.query.q as string}
             ></Column>
           );
         })}
