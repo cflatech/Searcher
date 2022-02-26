@@ -5,3 +5,5 @@ export type SearchResult = {
   link: string;
   timestamp: string;
 };
+
+export type SearchTarget = "slack" | "googledrive";
