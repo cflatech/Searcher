@@ -37,10 +37,7 @@ export const search = depend(
       query: string
     ) => Promise<drive_v3.Schema$File[]>,
   },
-  async (
-    { getFileInformations },
-    query: string
-  ): Promise<Array<SearchResult>> => {
+  async ({ getFileInformations }, query: string): Promise<SearchResult[]> => {
     const files = await getFileInformations(query);
     if (!files) {
       return [];

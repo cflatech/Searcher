@@ -1,9 +1,11 @@
 import { defineController } from "./$relay";
-import { search as slackSearch } from "$/repository/sites/slackRepository";
+import getSearcher from "./searchTargetSelector";
 
 export default defineController(() => ({
   get: async ({ query }) => {
-    const result = await slackSearch(query.query);
+    const searcher = getSearcher(query.target);
+
+    const result = await searcher(query.query);
     return { status: 200, body: result };
   },
 }));
