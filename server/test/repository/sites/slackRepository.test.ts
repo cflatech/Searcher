@@ -34,4 +34,7 @@ describe("searchのテスト", () => {
       },
     ]);
   });
+  test("queryが空の場合、空の検索結果がかえる", async () => {
+    await expect(search("")).resolves.toStrictEqual([]);
+  });
 });
