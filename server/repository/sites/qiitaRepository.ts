@@ -1,5 +1,4 @@
 import { SearchResult } from "$/types/sites";
-import { url } from "inspector";
 import fetch from "node-fetch";
 
 type qiitaItem = {
