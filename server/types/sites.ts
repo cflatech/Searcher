@@ -6,4 +6,4 @@ export type SearchResult = {
   timestamp: string;
 };
 
-export type SearchTarget = "slack" | "googledrive";
+export type SearchTarget = "slack" | "googledrive" | "qiita"; // | "backlog"
