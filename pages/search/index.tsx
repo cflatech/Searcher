@@ -22,7 +22,7 @@ const Search = () => {
     router.push({ pathname: "search", query: { q: query } });
   };
 
-  const searchTargets: SearchTarget[] = ["slack", "googledrive"];
+  const searchTargets: SearchTarget[] = ["slack", "googledrive", "qiita"];
 
   return (
     <>
