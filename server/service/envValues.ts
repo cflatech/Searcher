@@ -11,6 +11,8 @@ const API_ORIGIN = process.env.API_ORIGIN ?? "";
 const API_UPLOAD_DIR = process.env.API_UPLOAD_DIR ?? "";
 const SLACK_TOKEN = process.env.SLACK_TOKEN ?? "";
 const GOOGLE_DRIVE_CREDENTIAL = process.env.GOOGLE_DRIVE_CREDENTIAL ?? "";
+const QIITA_API_URL = process.env.QIITA_API_URL ?? "";
+const QIITA_ACCESS_TOKEN = process.env.QIITA_ACCESS_TOKEN ?? "";
 
 export {
   API_JWT_SECRET,
@@ -22,4 +24,6 @@ export {
   API_UPLOAD_DIR,
   SLACK_TOKEN,
   GOOGLE_DRIVE_CREDENTIAL,
+  QIITA_API_URL,
+  QIITA_ACCESS_TOKEN,
 };
