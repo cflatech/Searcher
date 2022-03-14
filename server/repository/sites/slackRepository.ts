@@ -20,13 +20,18 @@ export const search = depend(
       };
     },
   },
-  async ({ webClient }, query: string): Promise<SearchResult[]> => {
+  async (
+    { webClient },
+    query: string,
+    page: number
+  ): Promise<SearchResult[]> => {
     if (query === "") {
       return [];
     }
 
     const response = await webClient.search.messages({
       query: query,
+      count: 20,
       sort_dir: "asc",
       sort: "score",
     });

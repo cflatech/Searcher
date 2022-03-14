@@ -6,7 +6,9 @@ import { SearchTarget } from "$/types/sites";
 
 const getSearcher: (
   target: SearchTarget
-) => (query: string) => Promise<SearchResult[]> = (target: SearchTarget) => {
+) => (query: string, page: number) => Promise<SearchResult[]> = (
+  target: SearchTarget
+) => {
   switch (target) {
     case "slack":
       return slackSearch;

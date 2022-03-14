@@ -26,6 +26,6 @@ describe("searchのテスト", () => {
       },
     ];
 
-    await expect(injectedSearch("test")).resolves.toStrictEqual(result);
+    await expect(injectedSearch("test", 1)).resolves.toStrictEqual(result);
   });
 });

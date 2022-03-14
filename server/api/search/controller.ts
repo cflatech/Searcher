@@ -5,7 +5,7 @@ export default defineController(() => ({
   get: async ({ query }) => {
     const searcher = getSearcher(query.target);
 
-    const result = await searcher(query.query);
+    const result = await searcher(query.query, query.page);
     return { status: 200, body: result };
   },
 }));

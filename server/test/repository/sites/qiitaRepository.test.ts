@@ -6,6 +6,6 @@ describe("searchのテスト", () => {
   });
 
   test("空文字が与えられたら空配列が返る", async () => {
-    expect(search("")).resolves.toStrictEqual([]);
+    expect(search("", 1)).resolves.toStrictEqual([]);
   });
 });

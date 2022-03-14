@@ -1,6 +1,7 @@
 import { QIITA_ACCESS_TOKEN, QIITA_API_URL } from "$/service/envValues";
 import { SearchResult } from "$/types/sites";
 import fetch from "node-fetch";
+import { PER_PAGE } from "./const";
 
 type qiitaItem = {
   title: string;
@@ -8,7 +9,10 @@ type qiitaItem = {
   updated_at: string;
 };
 
-export const search = async (query: string): Promise<SearchResult[]> => {
+export const search = async (
+  query: string,
+  page: number
+): Promise<SearchResult[]> => {
   if (query === "") {
     return [];
   }
@@ -16,7 +20,13 @@ export const search = async (query: string): Promise<SearchResult[]> => {
   let items: qiitaItem[];
   try {
     const response = await fetch(
-      QIITA_API_URL + "/items?page=1&per_page=20&query=" + query,
+      QIITA_API_URL +
+        "/items?page=1&per_page=20&query=" +
+        query +
+        "&per_page=" +
+        PER_PAGE +
+        "&page=" +
+        page,
       {
         headers: {
           Authorization: "Bearer " + QIITA_ACCESS_TOKEN,

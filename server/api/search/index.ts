@@ -4,6 +4,7 @@ export type Methods = {
     query: {
       query: string;
       target: SearchTarget;
+      page: number;
     };
 
     resBody: SearchResult[];

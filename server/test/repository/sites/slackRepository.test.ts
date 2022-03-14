@@ -24,7 +24,7 @@ describe("searchのテスト", () => {
       },
     }));
 
-    await expect(injectedSearch("test")).resolves.toStrictEqual([
+    await expect(injectedSearch("test", 1)).resolves.toStrictEqual([
       {
         text: "SearchedText",
         link: "http://example.com",
@@ -35,6 +35,6 @@ describe("searchのテスト", () => {
     ]);
   });
   test("queryが空の場合、空の検索結果がかえる", async () => {
-    await expect(search("")).resolves.toStrictEqual([]);
+    await expect(search("", 1)).resolves.toStrictEqual([]);
   });
 });
