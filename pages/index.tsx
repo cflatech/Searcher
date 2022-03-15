@@ -28,7 +28,7 @@ const Top = () => {
       <div>
         <main>
           <h1 className="text-3xl font-semibold text-center flex justify-center items-end h-20">
-            Searcher
+            <a href="/">Searcher</a>
           </h1>
           <form>
             <div className="mt-2">

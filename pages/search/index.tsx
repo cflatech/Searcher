@@ -31,7 +31,7 @@ const Search = () => {
       </Head>
       <header className="flex border-b-2 pb-2 h-14 items-start absolute w-full">
         <div className="text-3xl font-semibold text-center flex justify-center items-end mx-2 mt-2">
-          Searcher
+          <a href="/">Searcher</a>
         </div>
         <form className="flex">
           <div className="mt-2 mr-2">
