@@ -14,6 +14,7 @@ const Column: React.VFC<Props> = (props: Props) => {
     query: {
       query: props.query ?? "",
       target: props.searchTarget,
+      page: 1,
     },
   });
 
