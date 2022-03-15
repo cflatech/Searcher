@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "~/components/Button";
 import Column from "~/components/Column";
 import SearchText from "~/components/SearchText";
@@ -8,7 +8,8 @@ import { SearchTarget } from "~/server/types/sites";
 
 const Search = () => {
   const router = useRouter();
-  const [query, setQuery] = useState<string>(router.query.q as string);
+  const [query, setQuery] = useState<string>("");
+  const [currentQuery, setCurrentQuery] = useState<string>("");
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -23,6 +24,14 @@ const Search = () => {
   };
 
   const searchTargets: SearchTarget[] = ["slack", "googledrive", "qiita"];
+
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    setCurrentQuery((router.query.q as string) ?? "");
+  });
 
   return (
     <>
@@ -48,7 +57,7 @@ const Search = () => {
             <Column
               key={target}
               searchTarget={target}
-              query={router.query.q as string}
+              query={currentQuery}
             ></Column>
           );
         })}
