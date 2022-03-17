@@ -23,13 +23,24 @@ const Column: React.VFC<Props> = (props: Props) => {
     );
   }
 
+  const handleLoadClick = () => {
+    setPageCount(pageCount + 1);
+  };
+
   return (
     <>
       <section className="border-x-2 mt-14 flex flex-col flex-1">
         <div className="border-y-2 h-10 text-2xl px-2">
           {props.searchTarget}
         </div>
-        <div className="overflow-y-scroll">{pages}</div>
+        <div className="overflow-y-scroll">
+          {pages}
+          <div onClick={handleLoadClick}>
+            <span className="h-16 border-b-2 flex flex-col px-2 py-1 text-center justify-center">
+              更に読み込む
+            </span>
+          </div>
+        </div>
       </section>
     </>
   );
