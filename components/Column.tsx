@@ -1,22 +1,27 @@
 import { SearchTarget } from "$/types/sites";
-import React from "react";
-import Item from "./Item";
-import useAspidaSWR from "@aspida/swr";
-import { apiClient } from "~/utils/apiClient";
+import React, { useState } from "react";
+import { Items } from "./Items";
 
 type Props = {
   searchTarget: SearchTarget;
   query: string;
+  page: number;
 };
 
 const Column: React.VFC<Props> = (props: Props) => {
-  const { data, error, mutate } = useAspidaSWR(apiClient.search, {
-    query: {
-      query: props.query ?? "",
-      target: props.searchTarget,
-      page: 1,
-    },
-  });
+  const [pageCount, setPageCount] = useState(1);
+
+  const pages = [];
+  for (let i = 1; i <= pageCount; i++) {
+    pages.push(
+      <Items
+        searchTarget={props.searchTarget}
+        query={props.query}
+        page={i}
+        key={i}
+      ></Items>
+    );
+  }
 
   return (
     <>
@@ -24,11 +29,7 @@ const Column: React.VFC<Props> = (props: Props) => {
         <div className="border-y-2 h-10 text-2xl px-2">
           {props.searchTarget}
         </div>
-        <div className="overflow-y-scroll">
-          {data?.map((searchResult, index) => {
-            return <Item key={index} searchResult={searchResult}></Item>;
-          })}
-        </div>
+        <div className="overflow-y-scroll">{pages}</div>
       </section>
     </>
   );
