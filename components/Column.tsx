@@ -5,7 +5,6 @@ import { Items } from "./Items";
 type Props = {
   searchTarget: SearchTarget;
   query: string;
-  page: number;
 };
 
 const Column: React.VFC<Props> = (props: Props) => {
