@@ -53,7 +53,9 @@ const Search = () => {
       </header>
       <main className="h-full flex justify-between">
         {searchTargets.map((target) => {
+          return currentQuery === "" ? (
             ""
+          ) : (
             <Column
               key={target}
               searchTarget={target}
