@@ -53,7 +53,7 @@ const Search = () => {
       </header>
       <main className="h-full flex justify-between">
         {searchTargets.map((target) => {
-          return (
+            ""
             <Column
               key={target}
               searchTarget={target}
