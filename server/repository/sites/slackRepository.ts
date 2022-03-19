@@ -34,6 +34,7 @@ export const search = depend(
       query: query,
       count: PER_PAGE,
       sort_dir: "asc",
+      page: page,
       sort: "score",
     });
 
