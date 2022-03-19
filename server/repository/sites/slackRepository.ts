@@ -7,6 +7,7 @@ import {
 import { SLACK_TOKEN } from "$/service/envValues";
 import { depend } from "velona";
 import { DateTime } from "luxon";
+import { PER_PAGE } from "./const";
 
 const webClient = new WebClient(SLACK_TOKEN);
 
@@ -31,7 +32,7 @@ export const search = depend(
 
     const response = await webClient.search.messages({
       query: query,
-      count: 20,
+      count: PER_PAGE,
       sort_dir: "asc",
       sort: "score",
     });
