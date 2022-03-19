@@ -31,7 +31,7 @@ const Search = () => {
     }
 
     setCurrentQuery((router.query.q as string) ?? "");
-  });
+    setQuery(router.query.q as string);
 
   return (
     <>
