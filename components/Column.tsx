@@ -29,8 +29,8 @@ const Column: React.VFC<Props> = (props: Props) => {
   return (
     <>
       <section className="border-x-2 mt-14 flex flex-col flex-1">
-        <div className="border-y-2 h-10 text-2xl px-2">
-          {props.searchTarget}
+        <div className="border-y-2 h-10 text-xl px-2 flex items-center">
+          {getFormalTitle(props.searchTarget)}
         </div>
         <div className="overflow-y-scroll">
           {pages}
