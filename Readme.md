@@ -7,6 +7,8 @@
 - backlog 追加
 - infinity scroll
 - キャッシュ機構
+- 2 ページめ以降の search の挙動調整
+  - googledrive が同じ結果を返してる
 
 # メモ
 
