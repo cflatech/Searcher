@@ -42,9 +42,9 @@ const Column: React.VFC<Props> = (props: Props) => {
                 e.preventDefault();
               }}
             >
-            <span className="h-16 border-b-2 flex flex-col px-2 py-1 text-center justify-center">
-              更に読み込む
-            </span>
+              <span className="h-16 border-b-2 flex flex-col px-2 py-1 text-center justify-center">
+                更に読み込む
+              </span>
             </a>
           </div>
         </div>
