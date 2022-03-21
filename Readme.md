@@ -8,8 +8,9 @@
 - infinity scroll
 - キャッシュ機構
 - 2 ページめ以降の search の挙動調整
-  - googledrive が同じ結果を返してる
+  - たまに検索結果にダブりがある
 - 検索条件設定
+- slack のリンク設定
 
 # メモ
 
