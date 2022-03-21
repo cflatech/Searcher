@@ -1,6 +1,6 @@
 import { SearchTarget } from "$/types/sites";
 import React, { useState } from "react";
-import { getFormalTitle } from "~/domains/SearchTarget";
+import { getFormalTitle } from "~/domains/sites/SearchTarget";
 import { Items } from "./Items";
 
 type Props = {
