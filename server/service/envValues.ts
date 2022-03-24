@@ -13,6 +13,8 @@ const SLACK_TOKEN = process.env.SLACK_TOKEN ?? "";
 const GOOGLE_DRIVE_CREDENTIAL = process.env.GOOGLE_DRIVE_CREDENTIAL ?? "";
 const QIITA_API_URL = process.env.QIITA_API_URL ?? "";
 const QIITA_ACCESS_TOKEN = process.env.QIITA_ACCESS_TOKEN ?? "";
+const BACKLOG_API_URL = process.env.BACKLOG_API_URL ?? "";
+const BACKLOG_API_KEY = process.env.BACKLOG_API_KEY ?? "";
 
 export {
   API_JWT_SECRET,
@@ -26,4 +28,6 @@ export {
   GOOGLE_DRIVE_CREDENTIAL,
   QIITA_API_URL,
   QIITA_ACCESS_TOKEN,
+  BACKLOG_API_URL,
+  BACKLOG_API_KEY,
 };

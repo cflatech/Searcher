@@ -10,5 +10,7 @@ export const getFormalTitle: (target: SearchTarget) => string = (
       return "Google Drive";
     case "qiita":
       return "Qiita";
+    case "backlog":
+      return "Backlog";
   }
 };
