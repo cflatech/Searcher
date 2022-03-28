@@ -1,26 +1,44 @@
-import { BACKLOG_API_URL } from "$/service/envValues";
+import { DateTime } from "luxon";
+import { BACKLOG_API_KEY, BACKLOG_URL } from "$/service/envValues";
 import { SearchResult } from "$/types/sites";
 import fetch from "node-fetch";
+import { PER_PAGE } from "./const";
 
+type backlogItem = {
+  summary: string;
+  issueKey: string;
+  link: string;
+  updated: string;
+};
+
+// TODO: 雑に作ってるので直す
 export const search = async (
   query: string,
   page: number
 ): Promise<SearchResult[]> => {
-  // const response = await fetch();
-  console.log(createApiUrl([1, 2], "test"));
+  const response = await fetch(createApiUrl(query, page));
 
-  return [
-    {
-      text: "hoge",
-      link: "fuga",
-      timestamp: "piyo",
-    },
-  ];
+  const items: backlogItem[] = await response.json();
+  return items.map((item) => {
+    return {
+      text: item.summary,
+      link: BACKLOG_URL + "/view/" + item.issueKey,
+      timestamp: DateTime.fromISO(item.updated).toFormat("yyyy-MM-dd HH:mm:ss"),
+    };
+  });
 };
 
-const createApiUrl = (projectIds: number[], keyward: string) => {
+const createApiUrl = (keyward: string, page: number) => {
   const parameter =
-    "projectId[]=" + projectIds.join("&projectId[]=") + "&keyward=" + keyward;
+    "apiKey=" +
+    BACKLOG_API_KEY +
+    "&keyword=" +
+    keyward +
+    "&sort=updated" +
+    "&offset=" +
+    PER_PAGE * page +
+    "&count=" +
+    PER_PAGE;
 
-  return BACKLOG_API_URL + "/issues?" + parameter;
+  return BACKLOG_URL + "/api/v2/issues?" + parameter;
 };
