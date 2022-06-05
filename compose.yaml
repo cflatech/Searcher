@@ -1,9 +1,0 @@
-services:
-  dev:
-    build:
-      context: .
-      dockerfile: ./docker/api/Dockerfile
-    volumes:
-      - .:/app
-    working_dir: /app
-    tty: true
